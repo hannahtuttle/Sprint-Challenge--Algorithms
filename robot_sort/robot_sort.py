@@ -1,3 +1,22 @@
+#plan:
+    # does the light need to be one in order to run these actions can the light be on while the robot is moving.
+    # can the robot drop an item and have no items in its hands?
+    # start at the begining of the list pick up the first item (swap nothing in the robots hands with the item) then move right 
+    # compare it with the item to the right
+        # if the item in your hand is larger than the item in front of you move right,
+        # if the item in your hand is smaller then the item in front of you then swap items and move right
+        # once you can no longer move right start comparing the items to your left.
+
+        # if the item in your hand is smaller than the item in front of you move left,
+        # if the item in your hand is larger then the item in front of you then swap items and move left
+
+         # or to be more like the bubble sort i can make the robot go all the way to the left before he does another pass. not sure which way is better.
+
+    # do these actions until the robot is empty handed (swaps with nothing).
+
+
+
+
 class SortingRobot:
     def __init__(self, l):
         """
@@ -97,7 +116,57 @@ class SortingRobot:
         Sort the robot's list.
         """
         # Fill this out
-        pass
+        self.set_light_on()
+        while self.light_is_on():
+        
+            self.set_light_off()
+            while self.can_move_right():
+            
+                self.swap_item()
+                self.move_right()
+                if self.compare_item() == 1:
+                    self.swap_item()
+                    self.move_left()
+                    self.swap_item()
+                    self.move_right()
+                    self.set_light_on()
+                else:
+                    self.move_left()
+                    self.swap_item()
+                    self.move_right()
+       
+
+            while self.can_move_left():
+                self.move_left()
+
+        return self._list
+
+                # self.swap_item()
+                # self.move_left()
+                # if self.compare_item() == 1:
+                #     self.move_right()
+                #     self.swap_item()
+                #     self.move_left()
+                # elif self.compare_item() == 0:
+                #     self.move_right()
+                #     self.swap_item()
+                #     self.move_left()
+                # elif self.compare_item() == -1:
+                #     self.swap_item()
+                #     self.move_right()
+                #     self.swap_item()
+                #     self.move_left()
+                #     # self.set_light_on()
+                # elif self.compare_item() == None:
+                #     self.swap_item()
+
+            # break
+           
+
+            
+
+
+            
 
 
 if __name__ == "__main__":
